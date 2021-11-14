@@ -20,7 +20,6 @@ spawn = multiprocessing.get_context("spawn")
 
 class AppReloader:
     def __init__(self, target: t.Callable):
-        logger.info(os.getcwd())
         self.watchers = [PythonWatcher(os.getcwd())]
         self.reload_delay = 0.25
         self.target = target
