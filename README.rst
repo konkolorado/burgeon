@@ -9,6 +9,13 @@ restart long running services whenever its source code changes.
 
 > Burgeon: To grow or develop rapidly; expand or proliferate.
 
+Installation
+============
+
+.. code-block:: bash
+
+    pip install burgeon
+
 Example Usage
 =============
 
