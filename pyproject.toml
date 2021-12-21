@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "burgeon"
-version = "0.1.2"
+version = "0.0.2"
 description = ""
 authors = ["Uriel Mandujano <uriel.mandujano14@gmail.com>"]
 readme = "README.rst"
