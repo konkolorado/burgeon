@@ -28,7 +28,7 @@ Example Usage
         while True:
             print("hello")
 
-    with_reloading(func)
+    with_reloading(my_function)
 
 The function above demonstrates a minimal example of using `with_reloading`.
 Once the code is executed, any changes to the file (that get saved) will notify
