@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+    name: Publish a release to PyPi
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Set target python version
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.6.2"
+
+      - name: Install poetry
+        run: python -m pip install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Retrieve new tag
+        run: echo "::set-output name=TAG::$(git describe --tags)"
+        id: version
+    
+      - name: Update changelog
+        run: poetry run scriv collect --version ${{ steps.version.outputs.TAG }}
+
+      - name: Update project version
+        run: poetry version ${{ steps.version.outputs.TAG }}
+
+      - name: Display
+        run: |
+          poetry version
+          cat CHANGELOG.rst
+      #- name: Commit release changes
+      #  run: git commit changelog.d/ CHANGELOG pyproject.toml
+
+      #- name: Build and publish
+      #  env:
+      #    POETRY_HTTP_BASIC_PYPI_USERNAME: __token__
+      #    POETRY_HTTP_BASIC_PYPI_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+      #  run: poetry publish --build
+

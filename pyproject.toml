@@ -15,6 +15,10 @@ pytest = "^5.2"
 black = "^21.10b0"
 mypy = "^0.910"
 isort = "^5.10.1"
+scriv = {extras = ["toml"], version = "^0.12.0"}
+
+[tool.scriv]
+categories = ["Added", "Fixed", "Documentation", "Deprecated"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
